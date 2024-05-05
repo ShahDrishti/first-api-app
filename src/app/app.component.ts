@@ -14,11 +14,47 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
       //we will call API here
-      this.printData();
+      //this.printData();
+      //this.addData();
+      this.updateData();
 
   }
-  printData(): void{
-    this.http.get('http://localhost:3000/department/3').subscribe(
+  // printData(): void{
+  //   this.http.get('http://localhost:3000/department/3').subscribe(
+  //     (res) => {
+  //       console.log(res);
+  //     },
+  //     (err)=>{
+  //       console.log(err);
+  //     }
+  //   )
+  // };
+ 
+  // addData(): void{
+
+  //   const newData = {
+  //     id: 55,
+  //     name: 'IT',
+  //     place: 'Pune'
+     
+  //   };
+  //   this.http.post('http://localhost:3000/department', newData).subscribe(
+  //     (res) => {
+  //       console.log(res);
+  //     },
+  //     (err)=>{
+  //       console.log(err);
+  //     }
+  //   )
+
+  // };
+  
+  updateData(): void{
+    const newData = {
+      name: 'MBBS',
+      place: 'Lahore'
+    }
+    this.http.put('http://localhost:3000/department/3', newData).subscribe(
       (res) => {
         console.log(res);
       },
@@ -26,5 +62,6 @@ export class AppComponent implements OnInit{
         console.log(err);
       }
     )
+
   }
 }
