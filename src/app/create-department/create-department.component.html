@@ -1,0 +1,19 @@
+ <!-- <button type="button" class="btn btn-primary" (click)="addData()">See Data</button> -->
+
+<form  [formGroup]="createData" (ngSubmit)="addData()">
+    <label for="id"><b>Department Id:</b></label>
+    <input type="text" id="id" formControlName="id">
+    <br><br>
+
+    <label for="name"><b>Department Name:</b></label>
+    <input type="text" id="name"  formControlName="name">
+    <br><br>
+
+    <label for="place"><b>Department Location:</b></label>
+    <input type="text" id="place" formControlName="place">
+    <br><br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br><br>
+</form>
+  

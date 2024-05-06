@@ -6,22 +6,24 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
+  data: any;
 
 
 
-  constructor(private http: HttpClient) { }
+   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-      //we will call API here
-      //this.printData();
-      //this.addData();
-      this.updateData();
+  // ngOnInit(): void {
+  //     //we will call API here
+  //     this.printData();
+  //     //this.addData();
+  //     //this.updateData();
 
-  }
+  // }
   // printData(): void{
-  //   this.http.get('http://localhost:3000/department/3').subscribe(
+  //   this.http.get('http://localhost:3000/department/2').subscribe(
   //     (res) => {
+  //       this.data =res
   //       console.log(res);
   //     },
   //     (err)=>{
@@ -33,9 +35,9 @@ export class AppComponent implements OnInit{
   // addData(): void{
 
   //   const newData = {
-  //     id: 55,
-  //     name: 'IT',
-  //     place: 'Pune'
+  //     id: 65,
+  //     name: 'AIML',
+  //     place: 'Dwarka'
      
   //   };
   //   this.http.post('http://localhost:3000/department', newData).subscribe(
@@ -49,19 +51,19 @@ export class AppComponent implements OnInit{
 
   // };
   
-  updateData(): void{
-    const newData = {
-      name: 'MBBS',
-      place: 'Lahore'
-    }
-    this.http.put('http://localhost:3000/department/3', newData).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (err)=>{
-        console.log(err);
-      }
-    )
+  // updateData(): void{
+  //   const newData = {
+  //     name: 'MBBS',
+  //     place: 'Lahore'
+  //   }
+  //   this.http.put('http://localhost:3000/department/3', newData).subscribe(
+  //     (res) => {
+  //       console.log(res);
+  //     },
+  //     (err)=>{
+  //       console.log(err);
+  //     }
+  //   )
 
-  }
+  // }
 }
