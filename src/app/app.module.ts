@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 
 import { CreateDepartmentComponent } from './create-department/create-department.component';
 import { ListDepartmentComponent } from './list-department/list-department.component';
+import { EditDepartmentComponent } from './edit-department/edit-department.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateDepartmentComponent,
-    ListDepartmentComponent
+    ListDepartmentComponent,
+    EditDepartmentComponent
    
   ],
   imports: [
