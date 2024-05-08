@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-list-department',
   templateUrl: './list-department.component.html',
@@ -10,11 +11,11 @@ import { HttpClient } from '@angular/common/http';
 export class ListDepartmentComponent implements OnInit{
 
   data: any;
+ 
   constructor( private http: HttpClient){}
 
   ngOnInit(): void {
-  this.printData();
-      
+    this.printData();
   };
 
   printData(): void{
@@ -29,6 +30,24 @@ export class ListDepartmentComponent implements OnInit{
 
     )
   };
+
+  
+  deleteDepartment(id:number): void {
+    
+    if (confirm('Are you sure you want to delete this department?')) {
+      this.http.delete('http://localhost:3000/department/'+id).subscribe(
+        (res) => {
+          // After deletion, refresh data
+          console.log("before refresh")
+          this.printData();
+          console.log("after refresh")
+        },
+        (err) => {
+          console.log( err);
+        }
+      );
+    }
+  }
 
 
 

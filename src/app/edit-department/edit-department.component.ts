@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,  FormGroup } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,7 +12,7 @@ export class EditDepartmentComponent implements OnInit {
   editData!: FormGroup
   data: any;
 
-  constructor(private fb:FormBuilder, private http: HttpClient, private route:ActivatedRoute){}
+  constructor(private fb:FormBuilder, private http: HttpClient, private route:ActivatedRoute, private router:Router){}
 
   ngOnInit(): void 
   {
@@ -26,12 +26,12 @@ export class EditDepartmentComponent implements OnInit {
           console.log(res);
           this.data = res;
           console.log("TEST")
-          console.log(this.data[0])
+          console.log(this.data.id)
           //console.log(this.data[0].id)
           this.editData= this.fb.group({  //#3
-            id: this.data[0].id, 
-            name: this.data[0].name,
-            place: this.data[0].place
+            id: this.data.id, 
+            name: this.data.name,
+            place: this.data.place
           });
         },
       )
@@ -44,6 +44,7 @@ export class EditDepartmentComponent implements OnInit {
     this.http.put('http://localhost:3000/department/'+this.data.id, this.editData.value).subscribe(
       (res) => {
         console.log(res);
+        this.router.navigate(['/list'])
       },
       (err)=>{
         console.log(err);

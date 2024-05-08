@@ -16,6 +16,7 @@
           <td>{{data.name}}</td>
           <td>{{data.place}}</td>
           <td><a [routerLink]="['/edit', data.id]">Edit</a></td> 
+          <td><button type="button" class="btn btn-link red-button"(click)="deleteDepartment(data.id)">Delete</button></td>
       </tr>
   </tbody>
 </table>
