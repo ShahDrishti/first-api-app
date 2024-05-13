@@ -9,6 +9,10 @@ import { AppComponent } from './app.component';
 import { CreateDepartmentComponent } from './create-department/create-department.component';
 import { ListDepartmentComponent } from './list-department/list-department.component';
 import { EditDepartmentComponent } from './edit-department/edit-department.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { FormsModule } from '@angular/forms';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 @NgModule({
@@ -16,14 +20,18 @@ import { EditDepartmentComponent } from './edit-department/edit-department.compo
     AppComponent,
     CreateDepartmentComponent,
     ListDepartmentComponent,
-    EditDepartmentComponent
+    EditDepartmentComponent,
+    UserManagementComponent,
+    AddUserComponent,
+    EditUserComponent
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

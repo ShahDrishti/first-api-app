@@ -1,0 +1,26 @@
+{{this.data.email}}
+<form [formGroup]="editUser" (ngSubmit)="updateUser()">
+    <label for="id"><b>Email Id:</b></label>
+    <input type="text" id="email" formControlName="email" [disabled]="emailDisabled">
+    <br><br>
+    <label for="id"><b>Password :</b></label>
+    <input type="text" id="password" formControlName="password">
+    <br><br>
+    <label for="id"><b>User Type :</b></label>
+    <input type="text" id="type" formControlName="type">
+    <br><br>
+    <label for="id"><b>First Name :</b></label>
+    <input type="text" id="fname" formControlName="fname">
+    <br><br>
+
+    <label for="name"><b>Last Name :</b></label>
+    <input type="text" id="lname" formControlName="lname">
+    <br><br>
+
+    <label for="place"><b>Active :</b></label>
+    <input type="text" id="active" formControlName="active">
+    <br><br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br><br>
+</form>

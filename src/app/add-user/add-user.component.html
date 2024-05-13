@@ -1,0 +1,34 @@
+<form [formGroup]="createUser" (ngSubmit)="addUser()">
+    <div class="form-group">
+        <label for="email"><b>Email address : </b></label>
+        <input type="email" id="email" formControlName="email" required>
+    </div>
+    <div class="form-group">
+        <label for="password"><b>Password :</b></label>
+        <input type="password" id="password" formControlName="password" required>
+    </div>
+    <div class="form-group">
+        <label for="userType"><b>User Type:</b></label>
+        <div class="radio">
+            <label><input type="radio" name="type" formControlName="type" value="admin"><b>Admin</b></label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="type" formControlName="type" value="Operater"><b>Operater</b></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="firstName"><b>First Name :</b></label>
+        <input type="text" id="fname" formControlName="fname">
+    </div>
+    <div class="form-group">
+        <label for="lastName"><b>Last Name :</b></label>
+        <input type="text" id="lname" formControlName="lname">
+    </div>
+    <div class="form-group">
+        <label for="active"><b>Active :</b></label>
+        <input type="checkbox" id="active" formControlName="active">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br><br>
+</form>
