@@ -11,31 +11,58 @@ import { HttpClient } from '@angular/common/http';
 export class EditUserComponent implements OnInit {
 
 
-  emailDisabled: boolean = true;
+   
   editUser!: FormGroup
   data: any
+  editModeOn = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
 
+
+    this.editUser = this.fb.group({
+      email: [''],
+      password: [''],
+      type: [''],
+      fname: [''],
+      lname: [''],
+      active: [''],
+    });
+
     this.route.paramMap.subscribe((params: ParamMap) => {
       let email = params.get('email');
-      this.http.get('http://localhost:3000/user/' + email).subscribe(
-        (res) => {
-          console.log(res);
-          this.data = res;
-          this.editUser = this.fb.group({
-            email: this.data.email,
-            password: this.data.password,
-            type: this.data.type,
-            fname: this.data.fname,
-            lname: this.data.lname,
-            active: this.data.active
-          });
-        },
-      )
+      if (email) {
+        this.editModeOn = true;
+        this.http.get('http://localhost:3000/user/' + email).subscribe(
+          (res) => {
+            console.log(res);
+            this.data = res;
+            this.editUser = this.fb.group({
+              email: this.data.email,
+              password: this.data.password,
+              type: this.data.type,
+              fname: this.data.fname,
+              lname: this.data.lname,
+              active: this.data.active
+            });
+          },
+        )
+
+      } else {
+        this.editModeOn = false;
+      }
+
     });
+  };
+
+  onSubmit() {
+    if (this.editModeOn) {
+      this.updateUser()
+    }
+    else {
+      this.addUser()
+    }
   };
 
 
@@ -50,5 +77,19 @@ export class EditUserComponent implements OnInit {
       }
     )
   };
+
+
+  addUser() {
+    this.http.post('http://localhost:3000/user', this.editUser.value).subscribe(
+      (res) => {
+        console.log(res)
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+
+  }
 
 }

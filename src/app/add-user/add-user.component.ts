@@ -26,7 +26,6 @@ export class AddUserComponent implements OnInit {
   };
 
   addUser() {
-    //const activeValue = this.createUser.value.active ? 'Yes' : 'No'; 
     this.http.post('http://localhost:3000/user', this.createUser.value).subscribe(
       (res) => {
         console.log(res);

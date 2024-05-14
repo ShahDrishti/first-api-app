@@ -32,15 +32,12 @@ export class UserManagementComponent implements OnInit {
 
   };
 
-  deleteUser(email: any ): void {
+  deleteUser(email: any): void {
 
     if (confirm('Are you sure you want to delete this User?')) {
       this.http.delete('http://localhost:3000/user/' + email).subscribe(
         (res) => {
-          // After deletion, refresh data
-          console.log("before refresh")
           this.showUser();
-          console.log("after refresh")
         },
         (err) => {
           console.log(err);

@@ -6,6 +6,7 @@ import { EditDepartmentComponent } from './edit-department/edit-department.compo
 import { UserManagementComponent } from './user-management/user-management.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     component:EditUserComponent,
     path:'edit-user/:email'
+  },
+  {
+    component:LoginPageComponent,
+    path:'login'
   }
 ];
 

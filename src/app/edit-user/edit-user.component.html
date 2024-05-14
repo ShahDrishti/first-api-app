@@ -1,7 +1,7 @@
-{{this.data.email}}
-<form [formGroup]="editUser" (ngSubmit)="updateUser()">
+<!-- {{this.data.email}} -->
+<form [formGroup]="editUser" (ngSubmit)="onSubmit()">
     <label for="id"><b>Email Id:</b></label>
-    <input type="text" id="email" formControlName="email" [disabled]="emailDisabled">
+    <input type="text" id="email" formControlName="email"  > <!--[disabled]="editModeOn"-->
     <br><br>
     <label for="id"><b>Password :</b></label>
     <input type="text" id="password" formControlName="password">
