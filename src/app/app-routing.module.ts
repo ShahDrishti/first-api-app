@@ -7,6 +7,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { SrcDepartmentComponent } from './src-department/src-department.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     component:LoginPageComponent,
     path:'login'
+  },
+  {
+    component:SrcDepartmentComponent,
+    path:'search'
   }
 ];
 

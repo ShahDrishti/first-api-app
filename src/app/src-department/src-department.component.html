@@ -1,0 +1,40 @@
+<h2>Search for a Department here ...</h2>
+<hr>
+<br>
+
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <label for="id"><b>Department Id:</b></label>
+    <input type="text" id="id" formControlName="id">
+    <br><br>
+
+    <label for="name"><b>Department Name:</b></label>
+    <input type="text" id="name"  formControlName="name">
+    <br><br>
+
+    <label for="place"><b>Department Location:</b></label>
+    <input type="text" id="place" formControlName="place">
+    <br><br>
+
+    <button type="submit" class="btn btn-primary">Search</button>
+    <br><br>
+</form>
+<br>
+<br>
+<div  *ngIf="data" class="table"><h3>Resultant Department Data !</h3></div>
+<br>
+<br><table *ngIf="data" class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Place</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of data">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.place}}</td>
+        </tr>
+    </tbody>
+</table>

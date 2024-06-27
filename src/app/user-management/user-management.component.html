@@ -1,14 +1,13 @@
-<button class="btn btn-primary" [routerLink]="['/edit-user','']">Add User</button>
-
 <table *ngIf="user" class="table">
     <thead>
         <tr>
-            <th>Email</th>
-            <th>Password</th>
-            <th>User Type</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Active</th>
+            <th>CB</th>
+            <th (click)="sortColumn('email')">Email</th>
+            <th (click)="sortColumn('password')">Password</th>
+            <th (click)="sortColumn('type')">User Type</th>
+            <th (click)="sortColumn('fname')">First Name</th>
+            <th (click)="sortColumn('lname')">Last Name</th>
+            <th (click)="sortColumn('active')">Active</th>
             <th>Edit</th>
             <th>Delete</th>
 
@@ -18,15 +17,44 @@
     </thead>
     <tbody>
         <tr *ngFor="let user of user">
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [value]="user"
+                        (change)="toggleSelection(user,$event)">
+                </div>
+            </td>
             <td>{{user.email}}</td>
             <td>{{user.password}}</td>
             <td>{{user.type}}</td>
             <td>{{user.fname}}</td>
             <td>{{user.lname}}</td>
             <td>{{user.active}}</td>
-            <td><a [routerLink]="['/edit-user', user.email]">Edit</a></td>
+            <td><a [routerLink]="['/edit-user', user.email]" >Edit</a></td>
             <td><button type="button" class="btn btn-link red-button" (click)="deleteUser(user.email)">Delete</button>
             </td>
         </tr>
     </tbody>
 </table>
+<br>
+<div class="left-button-container">
+    <!-- <button class="btn btn-primary" [routerLink]="['/edit-user','']">Add User</button> -->
+    <button class="btn btn-primary" (click)="openModal()">Add User</button>
+
+    <!-- Modal Structure -->
+    <div class="modal" *ngIf="isModalVisible">
+        <div class="modal-content">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <app-edit-user [isEdit]="false" (closeModal)="closeModal()"></app-edit-user>
+        </div>
+    </div>
+
+    <button class="btn btn-success" (click)="showUser()">Show Users</button>
+    <button type="button" class="btn btn-danger" (click)="deleteSelectedUsers()">Delete All</button>
+</div>
+<br>
+<!-- <div  *ngFor="let page of pages"  style="position: fixed; bottom: 20px; right: 20px;"></div>
+<postision Error was occurring ></postision> -->
+<div style=" position: fixed; bottom: 20px; right: 20px;">
+    <button *ngFor="let page of pages" type="button" class="btn btn-secondary"
+        (click)="pageSelected(page)">{{page}}</button>
+</div>

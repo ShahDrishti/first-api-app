@@ -14,6 +14,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { FormsModule } from '@angular/forms';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { SrcDepartmentComponent } from './src-department/src-department.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     UserManagementComponent,
     AddUserComponent,
     EditUserComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SrcDepartmentComponent
    
   ],
   imports: [

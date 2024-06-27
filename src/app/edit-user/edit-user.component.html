@@ -1,3 +1,4 @@
+<h2>{{ isEdit ? 'Edit User' : 'Add User' }}</h2>
 <!-- {{this.data.email}} -->
 <form [formGroup]="editUser" (ngSubmit)="onSubmit()">
     <label for="id"><b>Email Id:</b></label>

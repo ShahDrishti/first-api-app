@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input ,Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EditUserComponent implements OnInit {
 
-
-   
+  @Input() isEdit: boolean = false;
+  @Output() closeModal = new EventEmitter<void>();
   editUser!: FormGroup
   data: any
   editModeOn = false;
@@ -20,7 +20,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    
     this.editUser = this.fb.group({
       email: [''],
       password: [''],
@@ -63,6 +63,7 @@ export class EditUserComponent implements OnInit {
     else {
       this.addUser()
     }
+
   };
 
 
@@ -70,7 +71,7 @@ export class EditUserComponent implements OnInit {
     this.http.put('http://localhost:3000/user/' + this.data.email, this.editUser.value).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/user'])
+        this.closeModal.emit();
       },
       (err) => {
         console.log(err);
@@ -83,7 +84,9 @@ export class EditUserComponent implements OnInit {
     this.http.post('http://localhost:3000/user', this.editUser.value).subscribe(
       (res) => {
         console.log(res)
-        console.log(res);
+        this.closeModal.emit();
+        this.router.navigate(['/user']);
+        
       },
       (err) => {
         console.log(err);
